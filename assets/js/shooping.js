@@ -133,11 +133,9 @@ shoppingCart.forEach(product =>{
 window.eliminar = (id) => {
     shoppingCart.forEach((product) => {
       if (product.id == id) {
-        if (product.cantidad > 1) {    
-           product.cantidad -= 1;
-        } else {
+   
           shoppingCart = shoppingCart.filter((juego) => juego.id != id);
-        }
+   
         localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
         mostrarCarrito();
         mostrarPrecio();
