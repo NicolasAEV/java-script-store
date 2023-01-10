@@ -89,4 +89,11 @@ export const carritos = [{
     categoria : "aventura"
 }];
 
+export let usuarios = [
+    {
+        nombre: "nicolas",
+        password: "123456",
+        email: "nicolas@gmail.com"
+    }
 
+]
