@@ -30,7 +30,8 @@ btn1.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     let param = e.target.dataset.id;
-    location.href = "./details.html?id=" + encodeURIComponent(param);
+    location.href = "./views/details.html?id=" + encodeURIComponent(param);
+
   });
 });
 const btn2 = document.querySelectorAll("#buy");
@@ -38,6 +39,6 @@ btn2.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();
     let param = e.target.dataset.id;
-    location.href = "./cart.html?id=" + encodeURIComponent(param);
+    location.href = "./views/cart.html?id=" + encodeURIComponent(param);
   });
 });
