@@ -31,7 +31,7 @@ export let carritos = JSON.parse(localStorage.getItem("carritos")) || [{
     nombre: 'GR: Breackpoint',
     descripcion: 'GR: Breakpoint: Juego de disparos en tercera persona que se desarrolla en un mundo abierto y con elementos de rol. Controlarás a un soldado de élite que se encuentra atrapado en una isla tropical controlada por un grupo de soldados traicioneros. Deberás sobrevivir y descubrir la verdad detrás de la traición',
     precio: 10000,
-    imagen: 'https://generacionxbox.com/wp-content/uploads/2019/09/GR-Breakpoint-generacion-xbox.jpg',
+    imagen: 'https://www.zonammorpg.com/wp-content/uploads/2019/09/GR-Breakpoint-generacion-xbox-810x400.jpg',
     categoria : "aventura",
     stock : "10"
 }, {
