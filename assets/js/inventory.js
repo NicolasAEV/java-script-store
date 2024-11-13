@@ -47,7 +47,7 @@ function mostrarTabla() {
 //funcion encontrar un producto
 function buscarProducto(id) {
     let producto = new productos(id);
-    return producto.getProducto();
+    return producto.getProducto(id);
 }
 //al cambiar algun id en el formulario rellenara los compos con el
 idProducto.addEventListener("change", (e) => {
@@ -180,5 +180,5 @@ function timeRemove() {
     div.appendChild(alert)
     setTimeout(() => {
         div.remove(alert) //aca se eliminara la alerta
-    }, 10000);
+    }, 5000);
 }

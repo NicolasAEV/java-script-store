@@ -14,7 +14,7 @@ const renderProducts = (filteredProducts) => {
   filteredProducts.forEach((product) => {
     const row = document.createElement('div');
     row.innerHTML = `<div class="cards">
-      <img class="imagen-game" src="${product.imagen}" alt="imagen del juego">
+      <img class="imagen-game" loading="lazy" src="${product.imagen}" alt="imagen del juego">
       <h5 class="producto">${product.nombre}</h5>
       <p class="precio">Precio: ${formatCurrency(product.precio)}</p>
       <div class="info">

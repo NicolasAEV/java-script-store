@@ -13,7 +13,7 @@ for (let i = 0; i < 5; i++) {
   //establecemos la decendencia que vamos a insertar
   row.innerHTML = `
    <div class="cards">
-     <img class="imagen-game" src="${carritos[i].imagen}" alt="imagen del juego">
+     <img class="imagen-game" loading="lazy" src="${carritos[i].imagen}" alt="imagen del juego">
      <h5 class="producto">${carritos[i].nombre}</h5>
    <p class="precio">precio: ${formatCurrency(carritos[i].precio)}</p>
      <div class="info">
