@@ -1,4 +1,4 @@
-import { usuarios } from './object.js';
+import { usuarios } from "./users.js";
 
 document.getElementById("sign-up").addEventListener("click", function(event){
     event.preventDefault();

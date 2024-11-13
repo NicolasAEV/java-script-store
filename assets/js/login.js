@@ -1,21 +1,41 @@
-import { usuarios } from './object.js';
+import { usuarios } from "./users.js";
+// variables
+let div = document.querySelector('.alert-container');
+let alert = document.createElement('div');
 
-if (localStorage.getItem("usuarios")) {
-    usuarios = JSON.parse(localStorage.getItem("usuarios"));
-    console.log(usuarios);
-  }
-
-document.getElementById("login").addEventListener("click", function(event){
+// listeners
+document.getElementById("login").addEventListener("click", function (event) {
     event.preventDefault();
     let nombre = document.getElementById("usuario").value;
     let password = document.getElementById("password").value;
 
-    let encontrado = usuarios.find(usuario => usuario.nombre == nombre && usuario.password == password)
+    if (nombre.trim() === "" || password.trim() === "") {
+        alert.classList.add('alert', 'alert-danger');
+        alert.innerText = 'Todos los campos deben ser rellenados';
+        div.appendChild(alert);
+        setTimeout(() => {
+            div.removeChild(alert); // Corregido: se usa removeChild
+        }, 5000);
 
-    if(encontrado){
-        alert("Usuario autenticado.");
-        location.href= "./index.html";
-    }else{
-        alert("Datos incorrectos.");
+    } else {
+        let encontrado = usuarios.find(usuario => usuario.nombre === nombre && usuario.password === password);
+
+        if (encontrado) {
+            alert.classList.add('alert', 'alert-success');
+            alert.innerText = 'Usuario autenticado, redireccionando...';
+            div.appendChild(alert);
+            setTimeout(() => {
+                div.removeChild(alert); // Corregido: se usa removeChild
+                location.href = "../views/inventory.html"; // Redirección
+            }, 5000);
+
+        } else {
+            alert.classList.add('alert', 'alert-danger');
+            alert.innerText = 'Datos incorrectos';
+            div.appendChild(alert);
+            setTimeout(() => {
+                div.removeChild(alert); // Corregido: se usa removeChild
+            }, 5000);
+        }
     }
-})
+});

@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 
-/*colores*/
+/* Colores y fuente */
 * {
     font-family: 'Lato', sans-serif;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -19,68 +20,89 @@
 }
 
 body {
-    background-color: var(--blanco);
+    background-color: var(--fondo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .main {
-    background-color: var(--fondo);
-    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    height: 100%;
+    padding: 2rem;
 }
 
-.login {
+.login , .registro {
     display: flex;
     flex-direction: column;
     text-align: center;
-    box-shadow: 4px 4px 15px 4px var(--aqua);
-}
-
-.registro {
-    text-align: center;
-
-    box-shadow: 4px 4px 15px 4px var(--aqua);
-    display: flex;
-    flex-direction: column;
-}
-
-.login,
-.registro,
-input,
-button {
-    border: 1px solid #c6c6c6;
-    ;
-    padding: 2px 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
     border-radius: 10px;
-    margin: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     background-color: var(--blanco);
 }
 
 h2 {
     color: var(--aqua);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--pronom);
+    margin-top: 1rem;
+    text-align: left;
+}
+
+input {
+    border: 1px solid #c6c6c6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--aqua);
+    outline: none;
+}
+
+button {
+    background-color: var(--aqua);
+    color: var(--blanco);
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 1.5rem;
+}
+
+button:hover {
+    background-color: var(--pronom);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 a {
     text-decoration: none;
-    font-size: 13px;
-    color: var(--pronom);
-    margin: 2px 2px 10px 10px;
-}
-
-input:hover {
+    font-size: 0.9rem;
     color: var(--aqua);
-    border: 1px var(--aqua) solid;
-    border-radius: 10px;
-    font-weight: bold;
+    margin-top: 1rem;
 }
 
-button:hover {
-    color: var(--fondo);
-    background-color: var(--aqua);
-    border: 1px var(--aqua) solid;
-    border-radius: 10px;
-    font-weight: bold;
+a:hover {
+    color: var(--pronom);
 }
