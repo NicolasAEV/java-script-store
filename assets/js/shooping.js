@@ -198,7 +198,7 @@ function mostrarPrecio() {
         <p class="mb-2">${formatCurrency(total)}</p>
       </div>
 
-      <button type="button" class="btn btn-light">
+      <button type="button" class="btn btn-light" id="btnPagar">
         <div class="d-flex justify-content-center">
           <span>Pagar</span>
           <span><i class="fas fa-long-arrow-alt-right ms-2"></i></span>
@@ -208,5 +208,19 @@ function mostrarPrecio() {
   }
 }
 
-localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+// Agregar event listener para el botón de pagar
+document.addEventListener('DOMContentLoaded', () => {
+  const btnPagar = document.querySelector('#btnPagar');
+  if (btnPagar) {
+    btnPagar.addEventListener('click', () => {
+      shoppingCart = [];
+      localStorage.setItem('carritos', JSON.stringify(shoppingCart));
+      mostrarCarrito();
+      mostrarPrecio();
+      alert('¡Gracias por tu compra!');
+    });
+  }
+});
+
+localStorage.setItem('carritos', JSON.stringify(shoppingCart));
 
