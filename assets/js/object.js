@@ -1,4 +1,4 @@
-export let carritos = JSON.parse(localStorage.getItem("carritos")) || [{
+export const carritos = JSON.parse(localStorage.getItem("carritos")) || [{
     id : 1,
     cantidad : 1,
     nombre: 'AC: Valhalla',

@@ -31,7 +31,6 @@ vaciarCarrito.addEventListener('click', (e) => {
   mostrarPrecio();
 
 })
-// storage.clear();
 
 //funciones 
 if(id != null || id != undefined){
@@ -40,16 +39,16 @@ shoppingCart.forEach((product) => {
   if (product.id === juego.id) {
     existe = true;
     product.cantidad++;
+    localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
     mostrarCarrito();
-   mostrarPrecio();
-   
+    mostrarPrecio();
   }
 });
 if (!existe) {
-  shoppingCart.push(juego)
+  shoppingCart.push(juego);
+  localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
   mostrarCarrito();
   mostrarPrecio();
-
 }
 }else{
   mostrarCarrito();
@@ -59,45 +58,41 @@ if (!existe) {
 // Mostrar en carrito
 function mostrarCarrito() {
   con.innerHTML = '';
-  for (let i = 0; i < shoppingCart.length; i++) {
+  for (const product of shoppingCart) {
     if (shoppingCart !== null || shoppingCart !== undefined) {
-      con.innerHTML += ` 
-      <div class="card-body">
-        <div class="d-flex justify-content-between ">
-          <div class="d-flex flex-row align-items-center">
-            <div>
-              <img
-                src="${shoppingCart[i].imagen}"
-                class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-            </div>
-            <div class="ms-3">
-              <h5>${shoppingCart[i].nombre}</h5>
-              <p class="small mb-0">${shoppingCart[i].categoria}</p>
-            </div>
-          </div>
-          <div class="d-flex flex-row align-items-center">
-            <div class="cantidad-container">
-              <h7 class="cantidad-title">Cantidad</h7>
-              <div class="cantidad-input-container">
-                <button class="btn-qty btn-qty-decrement" onclick="restar('${shoppingCart[i].id}')">-</button>
-                <input class="cantidad-input" type="number" value="${shoppingCart[i].cantidad}" min="0" max="10">
-                <button class="btn-qty btn-qty-increment" onclick="sumar('${shoppingCart[i].id}')">+</button>
+      con.innerHTML += `
+      <div class="card shadow-sm border-0 rounded-4 mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-row align-items-center gap-3">
+              <img src="${product.imagen}" class="img-fluid rounded-3 border" alt="Shopping item" style="width: 65px; height:65px; object-fit:cover;">
+              <div>
+                <h5 class="mb-1 fw-bold">${product.nombre}</h5>
+                <span class="badge bg-primary mb-1">${product.categoria}</span>
               </div>
             </div>
-            <div style="width: 80px;">
-              <h5 class="mb-0 precio">${formatCurrency(shoppingCart[i].precio)}</h5>
+            <div class="d-flex flex-row align-items-center gap-3">
+              <div class="cantidad-container">
+                <span class="cantidad-title small">Cantidad</span>
+                <div class="cantidad-input-container d-flex align-items-center gap-1">
+                  <button class="btn btn-outline-secondary btn-sm btn-qty btn-qty-decrement" onclick="restar('${product.id}')">-</button>
+                  <input class="cantidad-input form-control form-control-sm text-center" type="number" value="${product.cantidad}" min="0" max="10" style="width:50px;">
+                  <button class="btn btn-outline-secondary btn-sm btn-qty btn-qty-increment" onclick="sumar('${product.id}')">+</button>
+                </div>
+              </div>
+              <div style="width: 80px;">
+                <h5 class="mb-0 precio text-success">${formatCurrency(product.precio)}</h5>
+              </div>
+              <a data-id="${product.id}" class="eliminar ms-2"><i class="fas fa-trash-alt text-danger" onclick='eliminar(${product.id})'></i></a>
             </div>
-            <a data-id="${shoppingCart[i].id}" class="eliminar"><i class="fas fa-trash-alt" onclick='eliminar(${shoppingCart[i].id})'></i></a>
           </div>
         </div>
       </div>`;
     } else {
-      con.innerHTML += ` 
-      <div class="card-body">
-        <div class="d-flex justify-content-between ">
-          <div class="d-flex flex-row align-items-center">
-            <p> por el momento no tienes productos añadidos al carrito </p>
-          </div>
+      con.innerHTML += `
+      <div class="card shadow-sm border-0 rounded-4 mb-3">
+        <div class="card-body text-center">
+          <p class="mb-0">Por el momento no tienes productos añadidos al carrito</p>
         </div>
       </div>`;
     }
@@ -170,39 +165,38 @@ function mostrarPrecio() {
   // Formatear los precios con el símbolo de pesos chilenos (CLP)
 
 
-  if(total != null || total != 0) {
+  if(total != null && total != 0) {
     cart.innerHTML = `
-      <hr class="my-4" />
-      <div class="d-flex justify-content-between">
-        <p class="mb-2">subTotal</p>
-        <p class="mb-2">${formatCurrency(subTotal)}</p>
-      </div>  
-
-      <div class="d-flex justify-content-between">
-        <p class="mb-2">iva (19%)</p>
-        <p class="mb-2">${formatCurrency(ivaTotal)}</p>
-      </div>  
-
-      <div class="d-flex justify-content-between">
-        <p class="mb-2">Descuento 25%</p>
-        <p class="mb-2">${formatCurrency(totalConDescuento)}</p>
-      </div>
-
-      <div class="d-flex justify-content-between">
-        <p class="mb-2">Envio</p>
-        <p class="mb-2">Free</p>
-      </div>
-
-      <div class="d-flex justify-content-between">
-        <p class="mb-2">Total</p>
-        <p class="mb-2">${formatCurrency(total)}</p>
-      </div>
-
-      <button type="button" class="btn btn-light" id="btnPagar">
-        <div class="d-flex justify-content-center">
-          <span>Pagar</span>
-          <span><i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+      <div class="card shadow-sm border-0 rounded-4 mb-3" style="background: #f8f9fa;">
+        <div class="card-body">
+          <h5 class="fw-bold mb-3" style="color:#222;">Resumen de compra</h5>
+          <div class="d-flex justify-content-between mb-2">
+            <span style="color:#444;">SubTotal</span>
+            <span style="color:#444;">${formatCurrency(subTotal)}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span style="color:#444;">IVA (19%)</span>
+            <span style="color:#444;">${formatCurrency(ivaTotal)}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span style="color:#444;">Descuento 25%</span>
+            <span style="color:#444;">${formatCurrency(totalConDescuento)}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span style="color:#444;">Envío</span>
+            <span style="color:#28a745;font-weight:600;">Free</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between mb-2">
+            <span class="fw-bold" style="font-size:1.1rem; color:#222;">Total</span>
+            <span class="fw-bold text-success" style="font-size:1.1rem;">${formatCurrency(total)}</span>
+          </div>
         </div>
+      </div>
+
+      <button type="button" class="btn btn-success w-100 py-3 fw-bold fs-5 shadow-sm" id="btnPagar" style="border-radius:2rem;letter-spacing:1px;">
+        <span>Pagar</span>
+        <span><i class="fas fa-long-arrow-alt-right ms-2"></i></span>
       </button>
     `;
   }
@@ -213,14 +207,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPagar = document.querySelector('#btnPagar');
   if (btnPagar) {
     btnPagar.addEventListener('click', () => {
-      shoppingCart = [];
-      localStorage.setItem('carritos', JSON.stringify(shoppingCart));
-      mostrarCarrito();
-      mostrarPrecio();
-      alert('¡Gracias por tu compra!');
+  shoppingCart = [];
+  localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+  mostrarCarrito();
+  mostrarPrecio();
+  alert('¡Gracias por tu compra!');
     });
   }
 });
 
-localStorage.setItem('carritos', JSON.stringify(shoppingCart));
+
 

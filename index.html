@@ -8,9 +8,9 @@
 
     <!--Bootstrap-->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
     <!-- Fontawasome icons -->
@@ -24,17 +24,23 @@
   </head>
 
   <body>
-    <!--llamanos-->
-    <div>
-      <div class="container text-center">
-        <p>Contactanos gamesofwar@gmail.com   20% de descuento en el total de tu compra</p>
-      </div>
-    </div>
+    <!-- Header Moderno -->
+ <header class="header-main py-4 mb-3 text-center text-white" style="background: linear-gradient(90deg, #1a2980 0%, #26d0ce 100%)">
+  <img src="../assets/img/logo.png" alt="Logo" style="height: 60px; margin-bottom: 10px" />
+  <h1 class="fw-bold mb-1" style="font-size: 2rem; letter-spacing: 2px">Games of War</h1>
+  <p class="mb-0">
+    Contactanos
+    <a href="mailto:gamesofwar@gmail.com" class="text-white text-decoration-underline">gamesofwar@gmail.com</a>
+    &bull; <span class="badge bg-warning text-dark">20% OFF</span> en tu compra
+  </p>
+</header>
+
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg bg-white">
-      <div class="container">
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm rounded mb-4">
+      <div class="container-fluid">
+  
         <button
-          class="navbar-toggler"
+          class="navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -45,139 +51,139 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-2">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.html"
-                >Inicio</a
-              >
+              <a class="nav-link active fw-semibold text-dark" aria-current="page" href="/index.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./views/product.html">Productos</a>
+              <a class="nav-link fw-semibold text-dark" href="/views/product.html">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./views/aboutus.html">Sobre Nosotros</a>
+              <a class="nav-link fw-semibold text-dark" href="/views/aboutus.html">Sobre Nosotros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./views/contact.html">Contactanos</a>
+              <a class="nav-link fw-semibold text-dark" href="/views/contact.html">Contactanos</a>
             </li>
           </ul>
-        </div>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2 align-items-center">
             <li class="nav-item">
-              <a class="nav-link" href="./views/cart.html"
-                ><i class="fa-solid fa-cart-shopping"></i
-              ></a>
+              <a class="nav-link position-relative" href="/views/cart.html">
+                <i class="fa-solid fa-cart-shopping fa-lg" style="color:#555;"></i>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
+              <a class="nav-link" href="#">
+                <i class="fa-solid fa-user fa-lg" style="color:#555;"></i>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./views/login.html">Login/Registro</i></a>
+              <a class="btn btn-gradient px-3 py-1 fw-bold text-white shadow-sm" style="background: linear-gradient(90deg, #1a2980 0%, #26d0ce 100%); border:none;" href="/views/login.html">Login/Registro</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!--fin Navbar-->
-    <!--Carrusel-->
-    <div class="container container-1">
-      <!-- Carousel -->
-      <div id="demo" class="carousel slide car" data-bs-ride="carousel">
-        <!-- Indicators/dots -->
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#demo"
-            data-bs-slide-to="0"
-            class="active"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#demo"
-            data-bs-slide-to="1"
-          ></button>
-        </div>
-
-        <!-- The slideshow/carousel -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="./assets/img/carr.jpg"
-              alt="Los Angeles"
-              class="d-block w-100"
-            />
+    <!--Carrusel Moderno-->
+    <section class="container mb-5">
+      <div class="custom-carousel mx-auto">
+        <div class="custom-carousel-track">
+          <div class="custom-slide active">
+            <img src="./assets/img/carr.jpg" alt="Bienvenido a Games of War" />
+            <div class="custom-caption">
+              <h5 class="fw-bold">Bienvenido a Games of War</h5>
+              <p>Descubre los mejores juegos y accesorios para gamers.</p>
+              <a href="./views/product.html" class="btn btn-primary btn-sm shadow">Ver productos</a>
+            </div>
           </div>
-          <div class="carousel-item">
-            <img
-              src="./assets/img/carr2.jpg"
-              alt="Chicago"
-              class="d-block w-100"
-            />
+          <div class="custom-slide">
+            <img src="./assets/img/carr2.jpg" alt="Ofertas Especiales" />
+            <div class="custom-caption">
+              <h5 class="fw-bold">Ofertas Especiales</h5>
+              <p>Aprovecha descuentos exclusivos en tu primera compra.</p>
+              <a href="./views/signup.html" class="btn btn-success btn-sm shadow">Regístrate</a>
+            </div>
+          </div>
+          <div class="custom-slide">
+            <img src="./assets/img/logo.png" alt="Únete a la comunidad" />
+            <div class="custom-caption">
+              <h5 class="fw-bold">Únete a la comunidad</h5>
+              <p>Participa en sorteos y eventos exclusivos para miembros.</p>
+              <a href="./views/aboutus.html" class="btn btn-warning btn-sm shadow">Conócenos</a>
+            </div>
           </div>
         </div>
-
-        <!-- Left and right controls/icons -->
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#demo"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#demo"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon"></span>
-        </button>
+        <button class="custom-carousel-btn prev">&#10094;</button>
+        <button class="custom-carousel-btn next">&#10095;</button>
+        <div class="custom-carousel-dots"></div>
       </div>
-      <!-- mostramos los productos -->
-      <div
-        class="container-2 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12"
-      ></div>
-    </div>
+    </section>
     <!--Fin Carrusel-->
 
-    <!--Footer-->
-    <footer>
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-          <ul>
-            <li>
-              <a href=""
-                ><img
-                  src="./assets/img/logo.png"
-                  alt="aqui se encuentra el logo"
-                />
-              </a>
-            </li>
-          </ul>
+    <!-- Sección de productos destacados -->
+    <section class="container mb-5">
+      <h2 class="text-center mb-4 fw-bold text-gradient">Productos Destacados</h2>
+      <div class="row justify-content-center g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-lg border-0 rounded-4 h-100" style="max-width: 270px; margin: 0 auto;">
+            <div class="position-relative">
+              <img src="./assets/img/carr.jpg" class="card-img-top rounded-4" alt="Mouse Gamer Pro" style="height:150px; object-fit:cover;">
+              <span class="badge bg-primary position-absolute top-0 end-0 m-2">Nuevo</span>
+            </div>
+            <div class="card-body text-center p-3">
+              <h5 class="card-title fw-bold" style="font-size:1.1rem;">Mouse Gamer Pro <i class="fa-solid fa-computer-mouse ms-1"></i></h5>
+              <p class="card-text" style="font-size:0.95rem;">Precisión y velocidad para tus partidas.</p>
+              <a href="./views/product.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">Ver más</a>
+            </div>
+          </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-          <ul>
-            <li><a href="./views/product.html">Productos</a></li>
-            <li><a href="./views/contact.html">Contactanos</a></li>
-            <li><a href="">@Copyright 2022</a></li>
-          </ul>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-lg border-0 rounded-4 h-100" style="max-width: 270px; margin: 0 auto;">
+            <div class="position-relative">
+              <img src="./assets/img/carr2.jpg" class="card-img-top rounded-4" alt="Teclado Mecánico RGB" style="height:150px; object-fit:cover;">
+              <span class="badge bg-success position-absolute top-0 end-0 m-2">Oferta</span>
+            </div>
+            <div class="card-body text-center p-3">
+              <h5 class="card-title fw-bold" style="font-size:1.1rem;">Teclado Mecánico RGB <i class="fa-solid fa-keyboard ms-1"></i></h5>
+              <p class="card-text" style="font-size:0.95rem;">Iluminación y comodidad para gamers exigentes.</p>
+              <a href="./views/product.html" class="btn btn-outline-success btn-sm rounded-pill px-3">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-lg border-0 rounded-4 h-100" style="max-width: 270px; margin: 0 auto;">
+            <div class="position-relative">
+              <img src="./assets/img/logo.png" class="card-img-top rounded-4 bg-dark p-3" alt="Headset Premium" style="height:150px; object-fit:contain; background:#222;">
+              <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2">Destacado</span>
+            </div>
+            <div class="card-body text-center p-3">
+              <h5 class="card-title fw-bold" style="font-size:1.1rem;">Headset Premium <i class="fa-solid fa-headphones ms-1"></i></h5>
+              <p class="card-text" style="font-size:0.95rem;">Sonido envolvente y micrófono de alta calidad.</p>
+              <a href="./views/product.html" class="btn btn-outline-warning btn-sm rounded-pill px-3">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer Moderno-->
+    <footer class="footer-main py-4 mt-5" style="background:#222; color:#fff;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-6 mb-3 mb-md-0 text-center text-md-start">
+            <img src="./assets/img/logo.png" alt="Logo" style="height:140px; width: 120px;">
+            <span class="ms-2">Games of War &copy; 2025</span>
+          </div>
+          <div class="col-12 col-md-6 text-center text-md-end">
+            <a href="./views/product.html" class="text-white me-3 text-decoration-none">Productos</a>
+            <a href="./views/contact.html" class="text-white me-3 text-decoration-none">Contactanos</a>
+            <a href="mailto:gamesofwar@gmail.com" class="text-white text-decoration-none">Email</a>
+          </div>
         </div>
       </div>
     </footer>
-    <!--Fin Footer-->
 
-    <!--Bootstrap js-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
     <script type="module" src="./assets/js/script.js"></script>
-    <!-- <script type="module" src="./assets/js/shooping.js"></script> -->
+    <script type="module" src="./assets/js/custom-carousel.js"></script>
   </body>
 </html>

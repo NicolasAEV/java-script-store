@@ -1,6 +1,5 @@
 // Imports
 import { carritos } from "./object.js";
-
 // Variables
 const urlParams = new URLSearchParams(location.search);
 const id = urlParams.get("id");
@@ -12,36 +11,43 @@ let juego = carritos.find((juego) => juego.id == id);
 if (juego) {
     const row = document.createElement('div');
     row.innerHTML = `
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-          <img src="${juego.imagen}" alt="" width="100%" style="border-radius: 10px; margin: 30px;">
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-          <h1 style="margin: 30px;">${juego.nombre}</h1>
-          <p style="margin: 30px;">${juego.categoria}</p>
-          <p style="margin: 30px;">${juego.descripcion}</p>
-          <p style="margin: 30px;">precio: ${juego.precio}</p>
-          <a class="button buy" id="buy" style="margin: 30px;" data-id="${juego.id}">Comprar</a>
+      <div class="card shadow-lg border-0 rounded-4 my-4 p-3">
+        <div class="row g-4 align-items-center">
+          <div class="col-12 col-md-6 text-center">
+            <img src="${juego.imagen}" alt="${juego.nombre}" class="img-fluid rounded-4 mb-3" style="max-height:320px; object-fit:cover;">
+          </div>
+          <div class="col-12 col-md-6">
+            <h2 class="fw-bold mb-2">${juego.nombre}</h2>
+            <span class="badge bg-primary mb-2">${juego.categoria}</span>
+            <p class="mb-2">${juego.descripcion}</p>
+            <h4 class="text-success mb-3">${juego.precio}</h4>
+            <button type="button" class="buy-btn px-4 py-2 fw-semibold shadow-sm" style="border-radius:2rem;letter-spacing:1px;background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;border:none;box-shadow:0 2px 8px rgba(67,233,123,0.10);transition:transform 0.15s,box-shadow 0.15s,background 0.2s;font-size:1rem;" id="buy" data-id="${juego.id}">
+              Comprar
+            </button>
+          </div>
         </div>
       </div>`;
     con.appendChild(row);
 } else {
     const row = document.createElement('div');
     row.innerHTML = `
-      <div class="card" style="width: 100%;">
-        <h5 class="card-title text-center">Disculpa, no se encontró el producto</h5>
+      <div class="card shadow border-0 my-4">
+        <div class="card-body text-center">
+          <h5 class="card-title">Disculpa, no se encontró el producto</h5>
+        </div>
       </div>`;
-    
-    // Añadir al contenedor
     con.appendChild(row);
 }
 
-// Evento click para el botón "Comprar"
-const button = document.querySelector("#buy");
-if (button) {
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
-    let param = e.target.dataset.id;
-    location.href = "./cart.html?id=" + encodeURIComponent(param);
-  });
-}
+
+// Asignar evento individual al botón Comprar
+setTimeout(() => {
+  const buyBtn = document.getElementById('buy');
+  if (buyBtn) {
+    buyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let param = buyBtn.dataset.id;
+      window.location.href = "./cart.html?id=" + encodeURIComponent(param);
+    });
+  }
+}, 0);
