@@ -1,9 +1,20 @@
 // Carga dinámica de navbar y footer en todas las páginas
 // Uso: <div id="navbar-component"></div> y <div id="footer-component"></div>
 
-function includeComponent(id, url) {
+function getBasePath() {
+  // Detecta si está en GitHub Pages
+  const path = window.location.pathname;
+  if (path.includes('/java-script-store/')) {
+    return '/java-script-store/components/';
+  }
+  // Local: carpeta raíz o views
+  return '/components/';
+}
+
+function includeComponent(id, file) {
   const el = document.getElementById(id);
   if (el) {
+    const url = getBasePath() + file;
     fetch(url)
       .then(res => res.text())
       .then(html => { el.innerHTML = html; })
@@ -12,8 +23,7 @@ function includeComponent(id, url) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Usar rutas absolutas para máxima compatibilidad
-  includeComponent('header-component', '/components/header.html');
-  includeComponent('navbar-component', '/components/navbar.html');
-  includeComponent('footer-component', '/components/footer.html');
+  includeComponent('header-component', 'header.html');
+  includeComponent('navbar-component', 'navbar.html');
+  includeComponent('footer-component', 'footer.html');
 });
