@@ -7,24 +7,45 @@ const searchInput = document.querySelector('.search');
 
 // Función para renderizar los productos
 const renderProducts = (filteredProducts) => {
-  // Limpiar la lista de productos antes de volver a renderizar
   con.innerHTML = '';
-  
-  // Iterar sobre los productos filtrados y agregarlos al DOM
   filteredProducts.forEach((product) => {
     const row = document.createElement('div');
-    row.innerHTML = `<div class="cards">
-      <img class="imagen-game" loading="lazy" src="${product.imagen}" alt="imagen del juego">
-      <h5 class="producto">${product.nombre}</h5>
-      <p class="precio">Precio: ${formatCurrency(product.precio)}</p>
-      <div class="info">
-        <a class="button details" id="details" data-id="${product.id}" href="">Detalles</a>
-        <a class="button buy" id="buy" data-id="${product.id}" href="">Comprar</a>
+    row.innerHTML = `
+      <div class="card shadow-sm border-0 rounded-4 mb-4 h-100 text-center">
+        <img class="card-img-top imagen-game rounded-4" loading="lazy" src="${product.imagen}" alt="imagen del juego" style="max-height:180px; object-fit:cover;">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">${product.nombre}</h5>
+          <p class="card-text text-success">${formatCurrency(product.precio)}</p>
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="details-btn px-4 py-2 fw-semibold shadow-sm" style="border-radius:2rem;letter-spacing:1px;background:linear-gradient(90deg,#36d1c4 0%,#5b86e5 100%);color:#fff;border:none;box-shadow:0 2px 8px rgba(91,134,229,0.10);transition:transform 0.15s,box-shadow 0.15s,background 0.2s;font-size:1rem;" data-id="${product.id}">
+              Detalles
+            </button>
+            <button type="button" class="buy-btn px-4 py-2 fw-semibold shadow-sm" style="border-radius:2rem;letter-spacing:1px;background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);color:#fff;border:none;box-shadow:0 2px 8px rgba(67,233,123,0.10);transition:transform 0.15s,box-shadow 0.15s,background 0.2s;font-size:1rem;" data-id="${product.id}">
+              Comprar
+            </button>
+          </div>
+        </div>
       </div>
-    </div>`;
-    
-    // Añadir el producto al contenedor
+    `;
     con.appendChild(row);
+  });
+
+  // Asignar eventos individuales a los botones
+  const detailsBtns = con.querySelectorAll('.details-btn');
+  detailsBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const param = btn.dataset.id;
+      window.location.href = `./details.html?id=${encodeURIComponent(param)}`;
+    });
+  });
+  const buyBtns = con.querySelectorAll('.buy-btn');
+  buyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const param = btn.dataset.id;
+      window.location.href = `./cart.html?id=${encodeURIComponent(param)}`;
+    });
   });
 };
 
@@ -44,22 +65,5 @@ searchInput.addEventListener('input', (e) => {
   renderProducts(filteredProducts);
 });
 
-// Event listeners para botones de detalles y compra
-const handleButtonClick = (e) => {
-  e.preventDefault();
-  const param = e.target.dataset.id;
-  
-  // Verifica si el botón es para detalles o compra
-  if (e.target.id === "details") {
-    location.href = `./details.html?id=${param}`;
-  } else if (e.target.id === "buy") {
-    location.href = `./cart.html?id=${encodeURIComponent(param)}`;
-  }
-};
+// Delegación de eventos para los nuevos botones modernizados
 
-// Agregar event listeners a los botones de detalles y comprar
-document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('button')) {
-    handleButtonClick(e);
-  }
-});
